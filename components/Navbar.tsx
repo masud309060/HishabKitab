@@ -55,7 +55,7 @@ export default function Navbar() {
             <div className="p-2 bg-blue-600 rounded-lg">
               <Wallet className="h-6 w-6 text-white" />
             </div>
-            <span className="text-xl font-bold tracking-tight">HishabKitab</span>
+            <span className="text-xl font-bold tracking-tight">Hishab Kitab</span>
           </div>
 
           <nav className="flex-1 space-y-1">

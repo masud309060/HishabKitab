@@ -23,7 +23,7 @@ export default function HomePage() {
         <div className="p-3 bg-blue-600 rounded-2xl shadow-lg shadow-blue-500/20 animate-bounce">
           <Loader2 className="h-8 w-8 text-white animate-spin" />
         </div>
-        <p className="text-slate-500 font-medium animate-pulse">Loading HishabKitab...</p>
+        <p className="text-slate-500 font-medium animate-pulse">Loading Hishab Kitab...</p>
       </div>
     </div>
   );

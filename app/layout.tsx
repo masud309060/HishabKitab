@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Personal Finance Manager",
+  title: "Hishab Kitab - Finance Manager",
   description: "Manage your income and expenses with ease",
 };
 
