@@ -1,7 +1,7 @@
 # <p align="center">Hishab Kitab - Your Personal Finance Companion</p>
 
 <p align="center">
-  <img src="/home/masud-rana/.gemini/antigravity/brain/4b05f574-135e-4235-946a-57af9fd2ff2f/hishab_kitab_banner_1768230434387.png" alt="Hishab Kitab Banner" width="100%">
+  <img src="https://raw.githubusercontent.com/masud309060/HishabKitab/refs/heads/main/public/dashboard.png" alt="Hishab Kitab Banner" width="100%">
 </p>
 
 <p align="center">
