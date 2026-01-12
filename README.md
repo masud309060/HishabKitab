@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# <p align="center">Hishab Kitab - Your Personal Finance Companion</p>
 
-## Getting Started
+<p align="center">
+  <img src="/home/masud-rana/.gemini/antigravity/brain/4b05f574-135e-4235-946a-57af9fd2ff2f/hishab_kitab_banner_1768230434387.png" alt="Hishab Kitab Banner" width="100%">
+</p>
 
-First, run the development server:
+<p align="center">
+  <strong>Master your money with ease and elegance.</strong><br>
+  Track transactions, visualize your spending, and achieve your financial goals with Hishab Kitab.
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🌟 Overview
+
+**Hishab Kitab** is a modern, full-stack personal finance management application designed to give you complete control over your financial life. Built with a focus on user experience and data security, it allows you to effortlessly track income and expenses, monitor your balance in real-time, and gain deep insights through detailed visual reports.
+
+## ✨ Key Features
+
+-   **🔐 Secure Authentication**: Multi-factor ready authentication powered by NextAuth.js.
+-   **📊 Dynamic Dashboard**: A comprehensive overview of your financial health, including total balance, recent transactions, and spending summaries.
+-   **📈 Transaction Management**: Effortlessly add, edit, and categorize your income and expenses.
+-   **📅 Insightful Reports**: Weekly and monthly analytical reports to help you understand your spending patterns.
+-   **🌍 Multi-Currency Support**: Manage your finances in your preferred currency (BDT, USD, EUR, etc.).
+-   **🌓 Theme Customization**: Elegant light and dark modes to suit your preference.
+-   **📱 Responsive Design**: Fully optimized for a seamless experience across all devices.
+
+## 🚀 Tech Stack
+
+-   **Frontend**: [Next.js](https://nextjs.org/) (App Router), [React](https://reactjs.org/), [Tailwind CSS](https://tailwindcss.com/)
+-   **Backend**: [Next.js API Routes](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)
+-   **Database**: [MongoDB](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
+-   **Authentication**: [NextAuth.js](https://next-auth.js.org/)
+-   **Form Management**: [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
+-   **Icons & UI**: [Lucide React](https://lucide.dev/), [Radix UI](https://www.radix-ui.com/), [Shadcn UI](https://ui.shadcn.com/)
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+-   [Node.js](https://nodejs.org/) (v18.0 or later)
+-   [MongoDB](https://www.mongodb.com/try/download/community) (Local or Atlas)
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/masud309060/HishabKitab.git
+    cd HishabKitab
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Set up environment variables:**
+    Create a `.env.local` file in the root directory and add the following:
+    ```env
+    MONGODB_URI=your_mongodb_connection_string
+    NEXTAUTH_SECRET=your_nextauth_secret
+    NEXTAUTH_URL=http://localhost:3000
+    ```
+    *(See `.example.env.local` for a template)*
+
+4.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+
+5.  **Open the app:**
+    Navigate to [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📂 Project Structure
+
+```text
+├── app/             # Next.js App Router (Pages, API, Layouts)
+├── (protected)/     # Authenticated routes
+├── components/      # Reusable UI components
+├── lib/             # Utility functions and shared logic
+├── models/          # Mongoose schemas and models
+├── public/          # Static assets
+└── types/           # TypeScript definitions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<!-- ## 🗺️ Roadmap
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+-   [ ] **Plan Generator**: AI-driven budget planning for various projects (Renovation, Decoration, etc.).
+-   [ ] **Savings Goals**: Set and track progress towards specific financial targets.
+-   [ ] **Bill Reminders**: Automated notifications for upcoming payments.
+-   [ ] **Export Data**: Download your financial reports in PDF or CSV format. -->
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+<!-- ## 🤝 Contributing
 
-## Learn More
+Contributions are welcome! Please feel free to submit a Pull Request. -->
 
-To learn more about Next.js, take a look at the following resources:
+<!-- ## 📄 License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. -->
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<!-- --- -->
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<p align="center">Made with ❤️ by <a href="https://github.com/masud309060">Masud Rana</a></p>
