@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import { Trash2, Edit2, ArrowUpRight, ArrowDownLeft, MoreVertical, Search, Filter } from "lucide-react";
 import { toast } from "sonner";
+import TransactionForm from "./TransactionForm";
 import {
     Table,
     TableBody,
@@ -160,10 +161,16 @@ export default function TransactionList({ refreshKey }: { refreshKey: number }) 
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end" className="rounded-xl border-slate-200 dark:border-slate-800 p-2 shadow-xl">
-                        <DropdownMenuItem className="rounded-lg gap-2 cursor-pointer">
-                          <Edit2 className="h-4 w-4" />
-                          Edit
-                        </DropdownMenuItem>
+                        <TransactionForm 
+                          onSuccess={fetchTransactions} 
+                          editTransaction={t} 
+                          trigger={
+                            <DropdownMenuItem onSelect={(e) => e.preventDefault()} className="rounded-lg gap-2 cursor-pointer">
+                              <Edit2 className="h-4 w-4" />
+                              Edit
+                            </DropdownMenuItem>
+                          }
+                        />
                         <DropdownMenuItem 
                           className="rounded-lg gap-2 text-red-600 focus:text-red-600 cursor-pointer"
                           onClick={() => handleDelete(t._id)}

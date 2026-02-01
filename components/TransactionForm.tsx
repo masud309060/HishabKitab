@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { Plus, Minus, Calendar as CalendarIcon, Loader2 } from "lucide-react";
 import { format } from "date-fns";
@@ -37,15 +37,42 @@ const categories = {
   expense: ["Food", "Rent", "Utilities", "Transport", "Shopping", "Entertainment", "Health", "Other Expense"],
 };
 
-export default function TransactionForm({ onSuccess }: { onSuccess?: () => void }) {
+interface Transaction {
+  _id: string;
+  amount: number;
+  category: string;
+  date: string;
+  note: string;
+  type: "income" | "expense";
+}
+
+export default function TransactionForm({ 
+  onSuccess, 
+  editTransaction,
+  trigger 
+}: { 
+  onSuccess?: () => void;
+  editTransaction?: Transaction;
+  trigger?: React.ReactNode;
+}) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [type, setType] = useState<"income" | "expense">("expense");
-  const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState("");
-  const [date, setDate] = useState<Date>(new Date());
-  const [note, setNote] = useState("");
+  const [type, setType] = useState<"income" | "expense">(editTransaction?.type || "expense");
+  const [amount, setAmount] = useState(editTransaction?.amount.toString() || "");
+  const [category, setCategory] = useState(editTransaction?.category || "");
+  const [date, setDate] = useState<Date>(editTransaction ? new Date(editTransaction.date) : new Date());
+  const [note, setNote] = useState(editTransaction?.note || "");
   const { settings } = useSettings();
+
+  useEffect(() => {
+    if (editTransaction) {
+      setType(editTransaction.type);
+      setAmount(editTransaction.amount.toString());
+      setCategory(editTransaction.category);
+      setDate(new Date(editTransaction.date));
+      setNote(editTransaction.note || "");
+    }
+  }, [editTransaction]);
   
   const currencySymbols: Record<string, string> = {
     USD: "$",
@@ -68,8 +95,13 @@ export default function TransactionForm({ onSuccess }: { onSuccess?: () => void 
 
     setLoading(true);
     try {
-      const res = await fetch("/api/transactions", {
-        method: "POST",
+      const url = editTransaction 
+        ? `/api/transactions/${editTransaction._id}` 
+        : "/api/transactions";
+      const method = editTransaction ? "PATCH" : "POST";
+
+      const res = await fetch(url, {
+        method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           amount: parseFloat(amount),
@@ -81,13 +113,13 @@ export default function TransactionForm({ onSuccess }: { onSuccess?: () => void 
       });
 
       if (res.ok) {
-        toast.success("Transaction added successfully");
+        toast.success(editTransaction ? "Transaction updated successfully" : "Transaction added successfully");
         setOpen(false);
-        resetForm();
+        if (!editTransaction) resetForm();
         if (onSuccess) onSuccess();
       } else {
         const error = await res.json();
-        toast.error(error.message || "Failed to add transaction");
+        toast.error(error.message || `Failed to ${editTransaction ? 'update' : 'add'} transaction`);
       }
     } catch (err) {
       toast.error("An unexpected error occurred");
@@ -106,16 +138,22 @@ export default function TransactionForm({ onSuccess }: { onSuccess?: () => void 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg shadow-blue-500/20 gap-2">
-          <Plus className="h-5 w-5" />
-          Add Transaction
-        </Button>
+        {trigger || (
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg shadow-blue-500/20 gap-2">
+            <Plus className="h-5 w-5" />
+            Add Transaction
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] rounded-3xl border-none shadow-2xl">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold">New Transaction</DialogTitle>
+          <DialogTitle className="text-2xl font-bold">
+            {editTransaction ? "Edit Transaction" : "New Transaction"}
+          </DialogTitle>
           <DialogDescription>
-            Record your income or expenses to track your balance.
+            {editTransaction 
+              ? "Update your transaction details." 
+              : "Record your income or expenses to track your balance."}
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-6 pt-4">
@@ -233,7 +271,7 @@ export default function TransactionForm({ onSuccess }: { onSuccess?: () => void 
                   : "bg-red-500 hover:bg-red-600 shadow-red-500/20"
               )}
             >
-              {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : `Add ${type}`}
+              {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : editTransaction ? "Update Transaction" : `Add ${type}`}
             </Button>
           </DialogFooter>
         </form>
