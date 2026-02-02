@@ -3,14 +3,14 @@ export type TransactionType = "income" | "expense";
 export const TRANSACTION_CATEGORIES: Record<TransactionType, string[]> = {
     income: [
         "Salary",
+        "Business",
         "Freelance",
         "Investment",
         "Gift",
-        "Business",
         "Other Income",
     ],
     expense: [
-        "Food",
+        "Food & Groceries",
         "Rent",
         "Utilities",
         "Transport",
@@ -23,6 +23,7 @@ export const TRANSACTION_CATEGORIES: Record<TransactionType, string[]> = {
         "Travel",
         "Insurance",
         "Tax",
+        "Personal Care",
         "Other Expense",
     ],
 };
