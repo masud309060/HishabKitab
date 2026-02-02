@@ -32,10 +32,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-const categories = {
-  income: ["Salary", "Freelance", "Investment", "Gift", "Other Income"],
-  expense: ["Food", "Rent", "Utilities", "Transport", "Shopping", "Entertainment", "Health", "Other Expense"],
-};
+import { TRANSACTION_CATEGORIES } from "@/lib/constants";
 
 interface Transaction {
   _id: string;
@@ -212,7 +209,7 @@ export default function TransactionForm({
                   <SelectValue placeholder="Select category" />
                 </SelectTrigger>
                 <SelectContent>
-                  {categories[type].map((cat) => (
+                  {TRANSACTION_CATEGORIES[type].map((cat) => (
                     <SelectItem key={cat} value={cat}>
                       {cat}
                     </SelectItem>

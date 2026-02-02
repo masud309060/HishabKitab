@@ -1,29 +1,28 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { 
-  format, 
-  startOfMonth, 
-  endOfMonth, 
-  subMonths, 
-  startOfWeek, 
-  endOfWeek, 
+import {
+  format,
+  startOfMonth,
+  endOfMonth,
+  subMonths,
+  startOfWeek,
+  endOfWeek,
   subWeeks,
   endOfDay
 } from "date-fns";
-import { 
-  Trash2, 
-  Edit2, 
-  ArrowUpRight, 
-  ArrowDownLeft, 
-  MoreVertical, 
-  Search, 
-  Filter,
-  Calendar as CalendarIcon,
+import {
+  Trash2,
+  Edit2,
+  ArrowUpRight,
+  ArrowDownLeft,
+  MoreVertical,
+  Search, Calendar as CalendarIcon,
   X
 } from "lucide-react";
 import { toast } from "sonner";
 import TransactionForm from "./TransactionForm";
+import { ALL_CATEGORIES } from "@/lib/constants";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
@@ -38,18 +37,18 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "@/components/ui/table";
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -122,10 +121,6 @@ export default function TransactionList({ refreshKey }: { refreshKey: number }) 
     fetchTransactions();
   }, [refreshKey, filterRange, filterCategory, customDate]);
 
-  const allCategories = [
-    "Salary", "Freelance", "Investment", "Gift", "Other Income",
-    "Food", "Rent", "Utilities", "Transport", "Shopping", "Entertainment", "Health", "Other Expense"
-  ].sort();
 
   const handleDelete = async (id: string) => {
     if (!confirm("Are you sure you want to delete this transaction?")) return;
@@ -214,7 +209,7 @@ export default function TransactionList({ refreshKey }: { refreshKey: number }) 
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All Categories</SelectItem>
-              {allCategories.map(cat => (
+              {ALL_CATEGORIES.map(cat => (
                 <SelectItem key={cat} value={cat}>{cat}</SelectItem>
               ))}
             </SelectContent>
