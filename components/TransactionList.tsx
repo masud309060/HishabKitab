@@ -68,7 +68,7 @@ export default function TransactionList({ refreshKey }: { refreshKey: number }) 
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterRange, setFilterRange] = useState("all");
+  const [filterRange, setFilterRange] = useState("this-month");
   const [filterCategory, setFilterCategory] = useState("all");
   const [customDate, setCustomDate] = useState<{ from: Date; to?: Date } | undefined>();
   const { formatCurrency } = useSettings();
@@ -236,7 +236,7 @@ export default function TransactionList({ refreshKey }: { refreshKey: number }) 
         <Table>
           <TableHeader>
             <TableRow className="bg-slate-50/50 dark:bg-slate-800/50">
-              <TableHead className="w-[100px]">Type</TableHead>
+              <TableHead className="w-[50px]">Type</TableHead>
               <TableHead>Category</TableHead>
               <TableHead>Date</TableHead>
               <TableHead className="hidden md:table-cell">Note</TableHead>

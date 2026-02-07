@@ -1,19 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { 
-  ArrowUpRight, 
-  ArrowDownLeft, 
-  Wallet, 
-  TrendingUp, 
-  TrendingDown,
-  Calendar,
+import {
+  ArrowUpRight,
+  ArrowDownLeft,
+  Wallet,
+  TrendingUp, Calendar,
   Clock
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import TransactionList from "@/components/TransactionList";
-import { cn } from "@/lib/utils";
 import { useSettings } from "@/components/SettingsProvider";
 
 interface Stats {
@@ -159,7 +156,7 @@ export default function DashboardPage() {
               <Clock className="h-5 w-5 text-blue-600" />
               Recent Transactions
             </h2>
-            <button className="text-sm text-blue-600 font-semibold hover:underline">View All</button>
+            <Link href="/transactions" className="text-sm text-blue-600 font-semibold hover:underline">View All</Link>
           </div>
           <TransactionList refreshKey={0} />
         </div>
@@ -185,3 +182,5 @@ export default function DashboardPage() {
 
 // Missing component import in dashboard
 import { PieChart } from "lucide-react";
+import Link from "next/link";
+
